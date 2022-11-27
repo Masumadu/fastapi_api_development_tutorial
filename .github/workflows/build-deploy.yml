@@ -75,10 +75,10 @@ jobs:
 #    needs: [test_and_build]
     environment:
       name: Production
-    env:
-      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      HEROKU_ACCOUNT_EMAIL: ${{ secrets.HEROKU_ACCOUNT_EMAIL }}
-      HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+#    env:
+#      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+#      HEROKU_ACCOUNT_EMAIL: ${{ secrets.HEROKU_ACCOUNT_EMAIL }}
+#      HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
     steps:
       - name: clone the repository
         uses: actions/checkout@v3
@@ -89,6 +89,8 @@ jobs:
           echo ${{ secrets.HEROKU_APP_NAME}}
       - name: Heroku login credentials
         run: |
+          printenv HEROKU_API_KEY
+          printenv HEROKU_ACCOUNT_EMAIL
           cat > ~/.netrc <<EOF
             machine api.heroku.com
               login $HEROKU_ACCOUNT_EMAIL
@@ -97,10 +99,16 @@ jobs:
               login $HEROKU_ACCOUNT_EMAIL
               password $HEROKU_API_KEY
           EOF
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_ACCOUNT_EMAIL: ${{ secrets.HEROKU_ACCOUNT_EMAIL }}
       - name: Add Heroku remote
         run: |
+          printenv HEROKU_APP_NAME
           heroku git:remote --app $HEROKU_APP_NAME
           git remote -v
+        env:
+          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       - name: Push to Heroku
         run: git push heroku main
 #      - name: add heroku remote to repository
