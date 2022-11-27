@@ -8,6 +8,15 @@ on:
 # reminder: task to perform
 jobs:
   job1:
+    env:
+      DATABASE_HOSTNAME: localhost
+      DATABASE_PORT: 5432
+      DATABASE_PASSWORD: admin
+      DATABASE_NAME: python_api_development_comprehensive
+      DATABASE_USERNAME: admin
+      SECRET_KEY: 7fbfc787b6c63798e4037c207a19a7cb42ba5bee3e986a7f0863485c22bbf4d3aba570c6203c644db11d325ee0413d5892d799d00ce64496cce1fc5e31d0c12f459b04f0054b7eed2610d84c63abee8523ee8189fcbee7f9745ec65d0695fd73694dca1be28fc127a654105347842d7da2342b520c8ebc0c925b41774035bbb2
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 30
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
