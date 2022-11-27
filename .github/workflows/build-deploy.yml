@@ -72,7 +72,7 @@ jobs:
 
   deploy_to_production:
     runs-on: ubuntu-latest
-    needs: [test_and_build]
+#    needs: [test_and_build]
     env:
       name: Production
     steps:
