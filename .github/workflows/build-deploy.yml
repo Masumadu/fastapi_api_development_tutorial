@@ -82,15 +82,8 @@ jobs:
     steps:
       - name: clone the repository
         uses: actions/checkout@v3
-      - name: echo heroku env variable
-        run: |
-          echo ${{ secrets.HEROKU_API_KEY }}
-          echo ${{ secrets.HEROKU_ACCOUNT_EMAIL }}
-          echo ${{ secrets.HEROKU_APP_NAME}}
       - name: Heroku login credentials
         run: |
-          printenv HEROKU_API_KEY
-          printenv HEROKU_ACCOUNT_EMAIL
           cat > ~/.netrc <<EOF
             machine api.heroku.com
               login $HEROKU_ACCOUNT_EMAIL
@@ -103,7 +96,8 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_ACCOUNT_EMAIL: ${{ secrets.HEROKU_ACCOUNT_EMAIL }}
       - name: Add Heroku remote
-        run: heroku git:remote --app fastapi-masumadu
+        run: heroku git:remote --app "fastapi-masumadu"
+
 #        env:
 #          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       - name: Push to Heroku
