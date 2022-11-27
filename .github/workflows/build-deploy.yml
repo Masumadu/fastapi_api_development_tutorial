@@ -82,6 +82,11 @@ jobs:
     steps:
       - name: clone the repository
         uses: actions/checkout@v3
+      - name: echo heroku env variable
+        run: |
+          echo ${{ secrets.HEROKU_API_KEY }}
+          echo ${{ secrets.HEROKU_ACCOUNT_EMAIL }}
+          echo ${{ secrets.HEROKU_APP_NAME}}
       - name: Heroku login credentials
         run: |
           cat > ~/.netrc <<EOF
