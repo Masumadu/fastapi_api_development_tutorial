@@ -75,6 +75,7 @@ jobs:
     needs: [test_and_build]
     environment:
       name: Production
+    steps:
       - name: deploying to heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
