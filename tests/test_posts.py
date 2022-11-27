@@ -98,4 +98,4 @@ def test_unauthorized_user_update_posts(client, test_posts, test_user):
 
 def test_delete_post_not_exist(authorized_client, test_posts, test_user):
     res = authorized_client.delete(f"/posts/{len(test_posts)+1}")
-    assert res.status_code == 404
+    assert res.status_code == 401
