@@ -1,0 +1,16 @@
+# reminder: name of work flow file
+name: Build and Deploy Code
+# reminder: what triggers this workflow
+on:
+  push:
+    branches:
+      - "develop"
+# reminder: task to perform
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pulling git repo
+        uses: action/checkout@v3
+      - name: say hi to me
+        run: echo "hello world
