@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - develop
+      - main
 # reminder: task to perform
 jobs:
   test_and_build:
