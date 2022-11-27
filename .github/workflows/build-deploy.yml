@@ -4,7 +4,7 @@ name: Build and Deploy Code
 on:
   push:
     branches:
-      - "develop"
+      - develop
 # reminder: task to perform
 jobs:
   test_and_build:
@@ -37,8 +37,6 @@ jobs:
     steps:
       - name: pulling git repo
         uses: actions/checkout@v3
-      - name: say hi to me
-        run: echo "hello world"
       - name: install python v3.10
         uses: actions/setup-python@v4
         with:
@@ -74,6 +72,14 @@ jobs:
   deploy_to_production:
     runs-on: ubuntu-latest
     needs: [test_and_build]
+    env:
+      name: Production
     steps:
-      - name: deploying stuff
-        run: echo "about to deploy some stuff"
+      - name: clone the repository
+        uses: actions/checkout@v3
+      - name: deploying to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.HEROKU_ACCOUNT_EMAIL}}
