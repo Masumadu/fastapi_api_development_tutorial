@@ -84,3 +84,4 @@ jobs:
           heroku_app_name: "fastapi-masumadu"
           heroku_email: "michaelasumadu1@gmail.com"
           branch: develop
+          dontuseforce: true
