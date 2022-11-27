@@ -4,7 +4,7 @@ name: Build and Deploy Code
 on:
   push:
     branches:
-      - develop
+#      - develop
       - main
 # reminder: task to perform
 jobs:
