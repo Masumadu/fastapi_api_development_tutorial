@@ -98,7 +98,7 @@ jobs:
           EOF
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_ACCOUNT_EMAIL: ${{ secrets.HEROKU_ACCOUNT_EMAIL }}
+          HEROKU_ACCOUNT_EMAIL: "michaelasumadu1@gmail.com"
       - name: Add Heroku remote
         run: heroku git:remote --app "fastapi-masumadu"
 
