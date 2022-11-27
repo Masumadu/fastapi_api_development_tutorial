@@ -82,8 +82,9 @@ jobs:
 #        run: heroku git:remote -a "fastapi-masumadu"
       - name: add heroku remote to repository
         run: |
-          heroku git:remote -a "fastapi-masumadu"
+          heroku git:remote -a fastapi-masumadu
           git remote -v
+          git push heroku main
 
 #        uses: akhileshns/heroku-deploy@v3.12.12
 #        with:
