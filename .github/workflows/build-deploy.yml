@@ -83,7 +83,9 @@ jobs:
       - name: clone the repository
         uses: actions/checkout@v3
       - name: check git version
-        run: git --version
+        run: |
+          git --version
+          heroku --version
       - name: Heroku login credentials
         run: |
           cat > ~/.netrc <<EOF
