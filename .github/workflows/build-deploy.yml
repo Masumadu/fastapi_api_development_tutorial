@@ -84,5 +84,3 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "fastapi-masumadu"
           heroku_email: "michaelasumadu1@gmail.com"
-          branch: develop
-          dontuseforce: true
