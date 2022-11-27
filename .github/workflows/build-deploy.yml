@@ -78,12 +78,16 @@ jobs:
     steps:
       - name: clone the repository
         uses: actions/checkout@v3
+#      - name: add heroku remote to repository
+#        run: heroku git:remote -a "fastapi-masumadu"
       - name: add heroku remote to repository
-        run: heroku git:remote -a "fastapi-masumadu"
-      - name: deploying to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "fastapi-masumadu"
-          heroku_email: "michaelasumadu1@gmail.com"
-          branch: main
+        run: |
+          heroku git:remote -a "fastapi-masumadu"
+          git remote -v
+
+#        uses: akhileshns/heroku-deploy@v3.12.12
+#        with:
+#          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+#          heroku_app_name: "fastapi-masumadu"
+#          heroku_email: "michaelasumadu1@gmail.com"
+#          branch: main
